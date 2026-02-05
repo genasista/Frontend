@@ -1,0 +1,34 @@
+# ci.yml — build-only (no deploy)
+trigger:
+  branches:
+    include:
+      - main        # runs after merges to main
+
+pr:
+  branches:
+    include:
+      - main        # validates PRs into main
+
+pool:
+  name: 'default'  # Self hosted agent on default pool
+  # Change to vmImage: 'ubuntu-latest' to switch to microsoft-hosted
+
+variables:
+  node_version: '20.x'
+
+steps:
+  # Install Node
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '$(node_version)'
+    displayName: 'Use Node.js $(node_version)'
+
+  # Install, lint (if present), test (if present), build
+  - script: npm ci --no-audit --no-fund
+    displayName: 'Install dependencies'
+  # - script: npm run lint --if-present
+    # displayName: 'Lint (if present)'
+  - script: npm test --if-present
+    displayName: 'Test (if present)'
+  - script: npm run build
+    displayName: 'Build'

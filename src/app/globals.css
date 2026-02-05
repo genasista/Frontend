@@ -1,0 +1,172 @@
+@import "tailwindcss";
+@import "../styles/utilities.css";
+
+/* -------------------- */
+/* Design tokens        */
+/* -------------------- */
+:root {
+
+  --app-max-w: 1200px;
+  --container-padding: 1.5rem;
+
+  --brand: var(--genassista-gradient);
+  --brand-pink-color: #d39eff;
+  --brand-blue-color: #82aff7;
+  --font-size: 16px;
+
+  /* light */
+  --background: #ffffff;
+  --foreground: oklch(0.145 0 0);
+  --card: #ffffff;
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+
+  --primary: #030213;
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.95 0.0058 264.53);
+  --secondary-foreground: #030213;
+  --muted: #ececf0;
+  --muted-foreground: #717182;
+  --accent: #e9ebef;
+  --accent-foreground: #030213;
+  --destructive: #d4183d;
+  --destructive-foreground: #ffffff;
+
+  --border: rgba(0, 0, 0, 0.1);
+  --input: transparent;
+  --input-background: #f3f3f5;
+  --switch-background: #cbced4;
+  --ring: oklch(0.708 0 0);
+  --radius: 0.625rem;
+
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: #030213;
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+
+  /* gradient token */
+  --background-gradient: linear-gradient(to bottom right, hsla(284, 87%, 79%, 0.20), hsla(217, 88%, 74%, 0.20));
+  --background-gradient-soft: linear-gradient(to bottom right, hsla(284, 87%, 79%, 0.055), hsla(217, 88%, 74%, 0.137));
+  --background-gradient-soft: linear-gradient(to bottom right, hsla(284, 87%, 79%, 0.055), hsla(217, 88%, 74%, 0.137));
+  --background-gradient-mid: linear-gradient(to bottom right, hsla(284, 87%, 79%, 0.50), hsla(217, 88%, 74%, 0.50));
+  --background-gradient-hard: linear-gradient(to bottom right, hsl(284, 87%, 79%), hsl(217, 88%, 74%));
+  --genassista-gradient: linear-gradient(to bottom right, #df9bf8, hsla(217, 88%, 74%));
+  --genassista-reverse-gradient: linear-gradient(to top left, #df9bf8, hsla(217, 88%, 74%));
+
+  --box-shadow-strong: 0px 1px 3px 0px #0000004d;
+
+
+  --border-radius: 10px;
+  --cta-padding: 2.5rem 1rem 3rem;
+
+  --btn-border: 1px solid hsla(0, 0%, 0%, 0.10);
+
+
+   /* Audit badge tokens */
+  --badge-read-bg: var(--secondary);
+  --badge-read-fg: var(--secondary-foreground);
+
+  /* Create/Update: vivid green/blue in OKLCH for great contrast */
+  --badge-create-bg: oklch(0.78 0.18 145); /* ~emerald 600 */
+  --badge-create-fg: #ffffff;
+
+  --badge-update-bg: oklch(0.70 0.12 239); /* ~indigo 600 */
+  --badge-update-fg: #ffffff;
+
+  /* Delete: reuse your destructive tokens */
+  --badge-delete-bg: var(--destructive);
+  --badge-delete-fg: var(--destructive-foreground);
+
+  --dialog-overlay: rgba(0, 0, 0, 0.116); 
+
+}
+
+.dark {
+  --brand: var(--genassista-gradient);
+
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+
+   /* Optional: nudge saturation up a hair in dark if you like */
+  --badge-create-bg: oklch(0.72 0.20 145);
+  --badge-update-bg: oklch(0.64 0.14 239);
+  /* Delete inherits your existing dark destructive tokens */
+  --badge-delete-bg: var(--destructive);
+  --badge-delete-fg: var(--destructive-foreground);
+
+
+  --dialog-overlay: rgba(0,0,0,0.35);
+
+  /* --background-gradient: linear-gradient(to bottom right, #14f300, #7a1010); */
+}
+
+/* -------------------- */
+/* Base (global)        */
+/* -------------------- */
+@layer base {
+  html { font-size: var(--font-size); }
+  * { border-color: var(--border); }
+  html, body {
+    background-color: var(--background);
+    color: var(--foreground);
+    min-height: 100vh;
+  }
+
+  /* type defaults (only when no Tailwind text-* overrides are present) */
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 { font-size: var(--text-2xl); font-weight: 500; line-height: 1.5; }
+    h2 { font-size: var(--text-xl);  font-weight: 500; line-height: 1.5; }
+    h3 { font-size: var(--text-lg);  font-weight: 500; line-height: 1.5; }
+    h4 { font-size: var(--text-base);font-weight: 500; line-height: 1.5; }
+    p  { font-size: var(--text-base);line-height: 1.5; }
+    label, button, input { font-size: var(--text-base); line-height: 1.5; }
+    label, button { font-weight: 500; }
+  }
+}
+
+/* NOTE: reusable component classes live in src/styles/utilities.css */
